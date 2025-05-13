@@ -1,0 +1,35 @@
+/* Logout.css */
+.logout-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Assure que la page occupe toute la hauteur de la fenêtre */
+    background-color: #f9f9f9; /* Couleur de fond */
+  }
+  
+  .message-container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff4b5c;
+  }
+  .navbar-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+ 
+    font-weight: 50;
+    color: #4b4b4b; /* Couleur par défaut */
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+  

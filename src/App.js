@@ -1,62 +1,62 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Home from "./Pages/Home";
+import Loading from "./Loading"; // Importe le composant Loading
+import Login from "./components/Login";
+import Logout from "./components/Logout"; // Importe la page de Logout
+import Signup from "./components/Signup"; // Importe la page d'inscription
+import Navbar from "./components/Navbar"
+import Profile from "./components/Profile"; // Importe la page Profile
+import Events from "./Pages/Events"; // Importe la page Events
+import Notifications from "./Pages/Notifications"; // Importe la page Notifications
+import Settings from "./Pages/Settings"; 
 import "./App.css";
 
-// Fonction pour créer la sphère avec un mouvement circulaire
-function Animated3DModel() {
-  const meshRef = useRef(null);
+const App = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4";
+    script.async = true;
+    document.body.appendChild(script);
 
-  // Utilisation de useFrame pour animer la sphère
-  useFrame(({ clock }) => {
-    const elapsedTime = clock.getElapsedTime(); // Temps écoulé
-    const radius = 3; // Rayon du cercle
-
-    // Déplacer la sphère le long d'un cercle
-    meshRef.current.position.x = radius * Math.cos(elapsedTime); // Position sur l'axe X
-    meshRef.current.position.z = radius * Math.sin(elapsedTime); // Position sur l'axe Z
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+  // Définir un utilisateur par défaut (ex. un objet utilisateur pour tester)
+  const [user, setUser] = useState({
+    name: "John Doe",
+    email: "johndoe@example.com",
+    photo: "profile.jpg",
   });
 
-  return (
-    <mesh ref={meshRef}>
-      <sphereGeometry args={[1, 32, 32]} />
-      <meshStandardMaterial color="blue" />
-    </mesh>
-  );
-}
+  const location = useLocation();  // Utilise useLocation pour accéder à l'URL actuelle
 
-export default function App() {
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (loading) {
-      setTimeout(() => {
-        navigate("/login");
-      }, 3000);
-    }
-  }, [loading, navigate]);
+  // Condition pour afficher ou non la navbar en fonction de l'URL
+  const shouldShowNavbar =
+    location.pathname !== "/notifications" &&
+    location.pathname !== "/login" &&
+    location.pathname !== "/logout" &&
+    location.pathname !== "/signup"&&
+    location.pathname !== "/settings"&&
+    location.pathname !== "/";
 
   return (
-    <div className="app-container">
-      <Canvas className="canvas">
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[2, 2, 2]} />
-        <Animated3DModel />
-        <OrbitControls />
-      </Canvas>
-      <motion.h1
-        className="welcome-text"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5 }}
-        onAnimationComplete={() => setLoading(true)}
-      >
-        Bienvenue sur notre application
-      </motion.h1>
-      {loading && <motion.div className="loader" animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 0.8 }} />}
-    </div>
+    <>
+      {shouldShowNavbar && <Navbar />} {/* Affiche la Navbar uniquement si la condition est vraie */}
+      <Routes>
+        <Route path="/" element={<Loading />} />
+        <Route path="/Home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/profile" element={<Profile user={user} />} /> {/* Passer 'user' à Profile */}
+      </Routes>
+    </>
   );
-}
+};
+
+export default App;

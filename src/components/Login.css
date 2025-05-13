@@ -1,44 +1,190 @@
-@keyframes rotateBills {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+/* Login.css */
+.body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: blue; /* Dégradé de couleurs corail, orange et jaune */
+  background-size: 300% 300%; /* Agrandir l'aire du fond pour l'animation */
+  animation: gradientAnimation 8s infinite alternate ease-in-out; /* Animation du dégradé */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Animation du dégradé de fond */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .bills-background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .bill {
-    position: absolute;
-    width: 80px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    animation: rotateBills 5s linear infinite;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .bill:nth-child(1) {
-    top: 10%;
-    left: 20%;
-    animation-duration: 6s;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  background:white; /* Fond semi-transparent */
+  backdrop-filter: blur(15px); /* Effet de flou */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
+  transform: translateY(-20px);
+  animation: fadeIn 1s ease-out, slideUp 0.8s ease-out forwards;
+}
+
+h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color:black;
+  opacity: 0;
+  animation: fadeInText 1.5s ease-out forwards 0.3s;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+  opacity: 0;
+  animation: fadeInText 1s ease-out forwards;
+}
+
+label {
+  display: block;
+  font-size: 17px;
+  margin-bottom: 5px;
+  color:black;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  color:black;
+  transition: 0.3s ease-in-out;
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background:blue;
+  color:white;
+  font-size: 19px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Ombre légère pour le bouton */
+}
+
+button:hover {
+  background:blue;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Ombre plus marquée au survol */
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.forgot-password {
+  margin-top: 15px;
+}
+
+.forgot-password a {
+  color:black;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.forgot-password a:hover {
+  color:black;
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .bill:nth-child(2) {
-    top: 50%;
-    left: 70%;
-    animation-duration: 8s;
+  to {
+    opacity: 1;
   }
-  
-  .bill:nth-child(3) {
-    top: 80%;
-    left: 30%;
-    animation-duration: 7s;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
   }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Version mobile */
+@media (max-width: 480px) {
   
+  .login-card {
+    padding: 15px;
+    width:80%;
+
+  }
+
+  h2 {
+    font-size: 22px; /* Réduire la taille du titre */
+    margin-bottom: 15px; /* Espacement réduit */
+    text-align: center; /* Centrer le titre */
+  }
+
+  .input-group {
+    margin-bottom: 10px; /* Réduire l'espacement entre les champs */
+  }
+
+  input {
+    font-size: 16px; /* Taille de police plus grande pour les champs de saisie */
+    padding: 10px; /* Réduire l'espace autour des champs */
+    width: 100%; /* La largeur des champs de saisie prendra toute la largeur disponible */
+  }
+
+  button {
+    font-size: 18px; /* Réduire la taille du texte du bouton */
+    padding: 10px; /* Réduire la taille du bouton */
+    width: 100%; /* Le bouton prendra toute la largeur disponible */
+  }
+
+  .forgot-password {
+    font-size: 14px; /* Réduire la taille de police du lien oublié mot de passe */
+    text-align: center; /* Centrer le lien */
+  }
+}

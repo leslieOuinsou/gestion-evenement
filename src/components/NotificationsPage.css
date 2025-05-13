@@ -1,0 +1,86 @@
+/* Conteneur principal de la page */
+.notifications-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f4f6f9;  /* Couleur de fond claire */
+    min-height: 100vh;
+  }
+  
+  /* Titre de la page */
+  .notifications-header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  /* Liste des notifications */
+  .notifications-list {
+    width: 100%;
+    max-width: 800px; /* Limiter la largeur */
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Style d'une notification */
+  .notification-item {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Hover effect sur les notifications */
+  .notification-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Notification lue */
+  .notification-item.read {
+    background-color: #e9f7ef; /* Couleur douce pour les notifications lues */
+    border-left: 5px solid #3dbd7d; /* Bordure à gauche pour les notifications lues */
+  }
+  
+  /* Notification non lue */
+  .notification-item.unread {
+    background-color: #fff3cd; /* Couleur jaune clair pour les notifications non lues */
+    border-left: 5px solid #ffc107; /* Bordure à gauche pour les notifications non lues */
+  }
+  
+  /* Texte de la notification */
+  .notification-item p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+    flex: 1;
+    max-width: 90%;
+    word-wrap: break-word; /* Permet aux longs mots de se casser */
+  }
+  
+  /* Statut de la notification */
+  .notification-status {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #666;
+    margin-left: 1rem;
+  }
+  
+  /* Style lorsque aucune notification n'est présente */
+  .no-notifications {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #999;
+    text-align: center;
+  }
+  

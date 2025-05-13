@@ -1,0 +1,165 @@
+.events-page {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+  background: url('../components/exposition-immersive-d-art-numerique.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+.events-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* assombrit légèrement */
+  z-index: 0;
+}
+
+.events-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 50%;
+  padding: 10px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
+}
+
+.search-icon {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #fff;
+}
+
+.events-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.event-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  color: #000;
+}
+
+.event-card:hover {
+  transform: scale(1.05);
+}
+
+.event-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.event-card h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.event-card p {
+  font-size: 14px;
+  color: #333;
+}
+
+.btn-details {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #003366;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+
+.promo-banner {
+  background-color: #FFFFFF;
+  color: #003366;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+}
+
+
+.btn-promo {
+  background-color:white; /* Remplacer le bleu par une couleur rouge, par exemple */
+  color:black;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 200px;
+  font-size: 0.8em;
+}
+
+.btn-promo:hover {
+  background-color:pink; /* Couleur de fond lors du survol (ici un rouge plus foncé) */
+  cursor: pointer; /* Changer le curseur pour indiquer que c'est cliquable */
+}
+
+.promo-badge {
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 15px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .events-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-bar input {
+    width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .events-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-bar input {
+    width: 90%;
+    margin-top: 10px;
+  }
+
+  .btn-promo {
+    width: auto;
+    padding: 8px;
+    font-size: 0.9em;
+  }
+}
